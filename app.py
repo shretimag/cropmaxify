@@ -18,11 +18,6 @@ def load_model(modelfile):
 	loaded_model = pickle.load(open(modelfile, 'rb'))
 	return loaded_model
 
-def label(y,num):
-    for i in range(y.shape[0]):
-        a = y[i]
-        return num[a]
-
 def main():
 
     html_temp = """
@@ -66,8 +61,8 @@ def main():
             xt = torch.from_numpy(x_scaled)
             output = (loaded_model(xt.float())).reshape((1,22))
             final = output.detach().numpy()
-            Y_Pred = np.argmax(final,axis=1)
-            ans = label(Y_Pred,num_crops)
+            Y_Pred = np.argmax(final,axis=1)	
+            ans = num_crops[Y_Pred]
 
             col1.write('''
 		    ## Results 
