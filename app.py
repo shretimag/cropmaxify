@@ -5,6 +5,11 @@ import numpy as np
 import os
 import pickle
 import warnings
+import pytorch
+import matplot.lib
+import seaborn
+import sklearn
+
 
 
 st.beta_set_page_config(page_title="Crop Recommender", page_icon="🌿", layout='centered', initial_sidebar_state="collapsed")
@@ -13,11 +18,16 @@ def load_model(modelfile):
 	loaded_model = pickle.load(open(modelfile, 'rb'))
 	return loaded_model
 
+def label(y,num):
+    for i in range(y.shape[0]):
+        a = y[i]
+        return num[a]
+
 def main():
-    # title
+
     html_temp = """
     <div>
-    <h1 style="color:MEDIUMSEAGREEN;text-align:left;">CropMaxify Recommendation</h1>
+    <h1 style="color:MEDIUMSEAREDN;text-align:left;">CropMaxify Recommendation</h1>
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
@@ -34,7 +44,7 @@ def main():
 
 
     with col2:
-        st.subheader("Lets find out what crop would be besst for you to grow in your farm!")
+        st.subheader("Lets find out what crop would be best for you to grow in your farm!")
         N = st.number_input("Nitrogen", 1,10000)
         P = st.number_input("Phosporus", 1,10000)
         K = st.number_input("Potassium", 1,10000)
@@ -49,11 +59,20 @@ def main():
         if st.button('Predict'):
 
             loaded_model = load_model('ml.pkl')
-            prediction = loaded_model.predict(single_pred)
+            scaler = load_model('scaler.pkl')
+            num_crops = load_model('num.pkl')
+            x_np = np.array(N,P,K,temp, humidity, ph, rainfall).reshape((1,7))
+            x_scaled = scaler.transform(x_np)
+            xt = torch.from_numpy(x_scaled)
+            output = (loaded_model(xt.float())).reshape((1,22))
+            final = output.detach().numpy()
+            Y_Pred = np.argmax(final,axis=1)
+            ans = label(Y_Pred,num_crops)
+
             col1.write('''
 		    ## Results 
 		    ''')
-            col1.success(f"{prediction.item().title()} are recommended by us for your farm")
+            col1.success(f"{ans} are recommended by us for your farm")
     hide_menu_style = """
     <style>
     #MainMenu {visibility: hidden;}
