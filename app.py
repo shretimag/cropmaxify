@@ -5,7 +5,7 @@ import numpy as np
 import os
 import pickle
 import warnings
-import pytorch
+import torch
 import matplot.lib
 import seaborn
 import sklearn
