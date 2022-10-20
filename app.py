@@ -1,13 +1,10 @@
 import streamlit as st 
 # import streamlit_tags as tags
-import pandas as pd
 import numpy as np
 import os
 import pickle
 import warnings
 import torch
-import matplotlib.pyplot
-import seaborn
 import sklearn
 
 
