@@ -40,7 +40,7 @@ given geographical conditions.
 
 
     with col2:
-        st.subheader("Lets find out what crop would be best for you to grow in your farm!")
+        st.subheader("Enter the following details. Nitrogen, Phophorous, Pottasium are the content of the nutrients in soils through fertilizers")
         N = st.number_input("Nitrogen", 1,10000)
         P = st.number_input("Phosporus", 1,10000)
         K = st.number_input("Potassium", 1,10000)
