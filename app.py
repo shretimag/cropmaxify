@@ -29,8 +29,12 @@ def main():
     with col1: 
         with st.beta_expander("Information", expanded=True):
             st.write("""
-            Crop recommendation is one of the most important aspects of precision agriculture. Crop recommendations are based on a number of factors. Precision agriculture seeks to define these criteria on a site-by-site basis in order to address crop selection issues. While the "site-specific" methodology has improved performance, there is still a need to monitor the systems' outcomes.Precision agriculture systems aren't all created equal. 
-            However, in agriculture, it is critical that the recommendations made are correct and precise, as errors can result in significant material and capital loss.
+            To help farmers effectively utilise their land, they will be
+suggested what crops they should grow on their land. They
+will be asked to enter the region they live in, the season and,
+the temperature of the surroundings. With the given details,
+they will be suggested to grow the most suitable crop in the
+given geographical conditions.
             """)
 
 
