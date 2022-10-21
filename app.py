@@ -9,7 +9,7 @@ import sklearn
 
 
 
-st.beta_set_page_config(page_title="Crop Recommender", page_icon="🌿", layout='centered', initial_sidebar_state="collapsed")
+st.beta_set_page_config(page_title="CropMaxify", page_icon="🌿", layout='centered', initial_sidebar_state="collapsed")
 
 def load_model(modelfile):
 	loaded_model = pickle.load(open(modelfile, 'rb'))
@@ -19,7 +19,7 @@ def main():
 
     html_temp = """
     <div>
-    <h1 style="color:MEDIUMSEAREDN;text-align:left;">CropMaxify Recommendation</h1>
+    <h1 style="color:MEDIUMSEAREDN;text-align:left;">CropMaxify</h1>
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
