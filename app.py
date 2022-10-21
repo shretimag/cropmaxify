@@ -53,7 +53,7 @@ def main():
             loaded_model = load_model('ml.pkl')
             scaler = load_model('scaler.pkl')
             num_crops = load_model('num.pkl')
-            x_np = np.array(N,P,K,temp, humidity, ph, rainfall).reshape((1,7))
+            x_np = (np.array([N,P,K,temp, humidity, ph, rainfall])).reshape((1,7))
             x_scaled = scaler.transform(x_np)
             xt = torch.from_numpy(x_scaled)
             output = (loaded_model(xt.float())).reshape((1,22))
