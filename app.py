@@ -29,7 +29,7 @@ def main():
     with col1: 
         with st.beta_expander("Information", expanded=True):
             st.write("""
-            To help farmers effectively utilise their land, they will be
+            For helping farmers  in effectively utilise their land, they will be
 suggested what crops they should grow on their land. They
 will be asked to enter the region they live in, the season and,
 the temperature of the surroundings. With the given details,
